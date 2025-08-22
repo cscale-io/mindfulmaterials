@@ -3,6 +3,14 @@
 This is a repository for open source data infrastructure work supporting Mindful Materials and the Common Materials Framework.
 
 
+## Launching the Application
+
+
+To run the application locally, 
+1. Install necessary dependencies from `requirements.txt`
+2. Run `uvicorn src.web.main:app --reload`
+
+
 ______
 Copyright 2025 Climate Scale, Inc.
 
