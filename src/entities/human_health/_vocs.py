@@ -9,7 +9,7 @@ from ..utilties import field_descriptions
 
 _factor_descriptions = {
    "ApplicableVOCTesting": "1.2.2.1 Applicable VOC Testing",
-   "VOCContentRegulatory": "1.2.2.2 VOC Content (Regulatory)",
+   "VOCContentRegulatory": "1.2.2.2 VOC Content (Regulatory) (g/L)",
    "VOCContentCarb2007": "1.2.4.1 VOC Content - CARB 2007 Compliance",
    "VOCContentSCAQMDCompliance": "1.2.4.2 VOC Content - SCAQMD Compliance Level",
    "VOCEmissionsCompliance": "1.2.4.3 VOC Emissions Compliance",

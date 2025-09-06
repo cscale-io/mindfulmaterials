@@ -8,15 +8,15 @@ from ..utilties import field_descriptions
 ###########################################
 
 _factor_descriptions = {
-  "ReportingThreshold": "1.1.1.1 Reporting Threshold Level.",
-  "ThirdPartyVerification": "1.1.1.2 Third-Party Verified.",
-  "ExtentOfDisclosedInventory": "1.1.1.3 Extent of Disclosed Inventory.",
-  "Screening": "1.1.1.4 Screened. If true, 100% screened.",
-  "Characterization": "1.1.1.5 Characterized. If true, 100% characterized.",
-  "Identification": "1.1.1.6 Identified. If true, 100% identified.",
-  "ClassBasedSubstanceAvoidance": "1.1.4.1 Class-Based Substance Avoidance.",
+  "ReportingThreshold": "1.1.1.1 Reporting Threshold Level",
+  "ThirdPartyVerification": "1.1.1.2 Third-Party Verified",
+  "ExtentOfDisclosedInventory": "1.1.1.3 Extent of Disclosed Inventory",
+  "Screening": "1.1.1.4 Screened",
+  "Characterization": "1.1.1.5 Characterized",
+  "Identification": "1.1.1.6 Identified",
+  "ClassBasedSubstanceAvoidance": "1.1.4.1 Class-Based Substance Avoidance",
   "AssessmentBasedOptimization": "1.1.4.2 Assessment-Based Optimization.",
-  "RestrictedSubstanceListScreening": "1.1.4.3 Restricted Substance List (RSL) Screening Compliance."
+  "RestrictedSubstanceListScreening": "1.1.4.3 Restricted Substance List (RSL) Screening Compliance"
 }
 
 # Reporting Threshold
