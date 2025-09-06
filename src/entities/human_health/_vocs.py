@@ -30,7 +30,7 @@ class VOCContentRegulatory(BaseModel):
 
 # VOC Content (CARB 2007)
 
-class VOCContentCarb2007(BaseModel):
+class VOCContentCarb2007Compliance(BaseModel):
    metric: Optional[bool] = Field(None, description=field_descriptions['metric'])
    description: str = _factor_descriptions['VOCContentCarb2007']
    standard: Any = Field(None, description=field_descriptions['standard'])
@@ -122,7 +122,7 @@ class Assessment(BaseModel):
    voc_content_regulatory: VOCContentRegulatory
 
 class Optimization(BaseModel):
-   voc_content_standard_compliance: VOCContentStandardCompliance
+   voc_content_carb2007_compliance: VOCContentCarb2007Compliance
    voc_content_scaqmd_compliance: VOCContentSCAQMDCompliance
    voc_emissions_compliance: VOCEmissionsCompliance
    tvoc_emissions_range: TVOCEmissionsRange
