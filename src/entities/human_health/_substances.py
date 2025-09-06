@@ -21,16 +21,15 @@ _factor_descriptions = {
 
 # Reporting Threshold
 
-class ReportingThresholdValue(Enum):
+class ReportingThresholdMetric(Enum):
     PPM_100 = "100 ppm"
     PPM_1000 = "1,000 ppm" 
     PPM_10000 = "10,000 ppm"
 
 class ReportingThreshold(BaseModel):
-    metric: Optional[ReportingThresholdValue] = Field(None, description=field_descriptions['metric'])
-    description: str = Field(_factor_descriptions['ReportingThreshold'], 
-                           description=field_descriptions['description'])
-    standard: Any = Field(None, description=field_descriptions['standard'])
+   metric: Optional[ReportingThresholdMetric] = Field(None, description=field_descriptions['metric'])
+   description: str = Field(_factor_descriptions['ReportingThreshold'], 
+                        description=field_descriptions['description'])
 
 # Third-Party Verification
 
@@ -38,10 +37,21 @@ class ThirdPartyVerification(BaseModel):
     metric: Optional[bool] = Field(None, description=field_descriptions['metric'])
     description: str = Field(_factor_descriptions['ThirdPartyVerification'], 
                            description=field_descriptions['description'])
-    standard: Any = Field(None, description=field_descriptions['standard'])
+   #  standard: Any = Field(None, description=field_descriptions['standard'])
+
+# Extent of Disclosed Inventory
+
+class InventoryDisclosure(Enum):
+   DISCLOSURE_100_PUBLIC = "100% publicly disclosed inventory"
+   DISCLOSURE_99_PUBLIC = ">= 99% publicly disclosed inventory"
+   DISCLOSURE_75_PUBLIC = ">= 75% publicly disclosed inventory"
+   NOT_PUBLIC = "Inventory not public"
+   DISCLOSURE_100_THIRD_PARTY = "Inventory not public, but 100% disclosed to 3rd party"
 
 class ExtentOfDisclosedInventory(BaseModel):
-   value: Any
+   metric: Optional[InventoryDisclosure] = Field(None, description=field_descriptions['metric'])
+   description: str = Field(_factor_descriptions['ReportingThreshold'], 
+                        description=field_descriptions['description'])
 
 # Screened?
 
@@ -49,7 +59,6 @@ class Screening(BaseModel):
    metric: Optional[bool] = Field(None, description=field_descriptions['metric'])
    description: str = Field(_factor_descriptions['Screening'], 
                           description=field_descriptions['description'])
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # Characterized?
 
@@ -57,7 +66,6 @@ class Characterization(BaseModel):
    metric: Optional[bool] = Field(None, description=field_descriptions['metric'])
    description: str = Field(_factor_descriptions['Characterization'], 
                           description=field_descriptions['description'])
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # Identified?
 
@@ -65,7 +73,6 @@ class Identification(BaseModel):
    metric: Optional[bool] = Field(None, description=field_descriptions['metric'])
    description: str = Field(_factor_descriptions['Identification'], 
                           description=field_descriptions['description'])
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # Class-Based Substance Avoidance
 
@@ -93,7 +100,6 @@ class ClassBasedSubstanceAvoidance(BaseModel):
    metric: Optional[List[AvoidedSubstance]] = Field(None, description=field_descriptions['metric'])
    description: str = Field(_factor_descriptions['ClassBasedSubstanceAvoidance'], 
                            description=field_descriptions['description'])
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # Assessment-Based Optimization
 
@@ -106,7 +112,6 @@ class AssessmentBasedOptimization(BaseModel):
    metric: Optional[OptimizationPercentage] = Field(None, description=field_descriptions['metric'])
    description: str = Field(_factor_descriptions['AssessmentBasedOptimization'], 
                         description=field_descriptions['description'])
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # Restricted Substance List (RSL) Screening Compliance
 
@@ -135,7 +140,6 @@ class RestrictedSubstanceListScreening(BaseModel):
    metric: Optional[List[RestrictedSubstanceList]] = Field(None, description=field_descriptions['metric'])
    description: str = Field(_factor_descriptions['RestrictedSubstanceListScreening'], 
                           description=field_descriptions['description'])
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 ###########################################
 # CATEGORIES
