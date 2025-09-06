@@ -1,36 +1,117 @@
-from pydantic import BaseModel
-from typing import Literal, Any
+from pydantic import BaseModel, Field
+from typing import Literal, Any, Optional, Enum, List
+from ..utilties import field_descriptions
 
 ###########################################
 # FACTORS
 ###########################################
 
+_factor_descriptions = {}
+
+# Applicable VOC Testing
+
+class VOCTestingType(Enum):
+   VOC_CONTENT = "VOC Content"
+   VOC_EMISSIONS = "VOC Emissions"
+   FORMALDEHYDE_EMISSIONS = "Formaldehyde Emissions"
+   INHERENTLY_NON_EMITTING = "Inherently Non-Emitting"
+
 class ApplicableVOCTesting(BaseModel):
-   value: Any
+   metric: Optional[List[VOCTestingType]] = Field(None, description=field_descriptions['metric'])
+   description: str = _factor_descriptions['ApplicableVOCTesting']
+   standard: Any = Field(None, description=field_descriptions['standard'])
+
+# VOC Content (Regulatory)
 
 class VOCContentRegulatory(BaseModel):
-   value: Any
+    metric: Optional[float] = Field(None, ge=0, le=1000, description=field_descriptions['metric'])
+    description: str = _factor_descriptions['VOCContentRegulatory']
+    standard: Any = Field(None, description=field_descriptions['standard'])
 
-class VOCContentStandardCompliance(BaseModel):
-   value: Any
+# VOC Content (CARB 2007)
+
+class VOCContentCarb2007(BaseModel):
+   metric: Optional[bool] = Field(None, description=field_descriptions['metric'])
+   description: str = _factor_descriptions['VOCContentCarb2007']
+   standard: Any = Field(None, description=field_descriptions['standard'])
+
+# VOC Content - SCAQMD Compliance
+
+class SCAQMDCompliance(Enum):
+   NON_COMPLIANT = "Non-Compliant"
+   ZERO_VOC = "Zero VOC"
+   COMPLIANT = "Compliant (Low-VOC)"
+   SUPER_COMPLIANT = "Super-Compliant"
 
 class VOCContentSCAQMDCompliance(BaseModel):
-   value: Any
+   metric: Optional[SCAQMDCompliance] = Field(None, description=field_descriptions['metric'])
+   description: str = _factor_descriptions['VOCContentSCAQMDCompliance']
+   standard: Any = Field(None, description=field_descriptions['standard'])
+
+# VOC Emissions Compliance
+
+class VOCEmissionsStandard(Enum):
+   INHERENTLY_NON_EMITTING = "Inherently Non-Emitting"
+   CDPH_V1_1 = "CDPH Standard Method v1.1-2010"
+   CDPH_V1_2 = "CDPH Standard Method v1.2-2017"
+   GREEN_LABEL_PLUS = "Green Label Plus (GLP) Emissions Criteria v2.01-2017"
 
 class VOCEmissionsCompliance(BaseModel):
-   value: Any
+   metric: Optional[VOCEmissionsStandard] = Field(None, description=field_descriptions['metric'])
+   description: str = _factor_descriptions['VOCEmissionsCompliance']
+   standard: Any = Field(None, description=field_descriptions['standard'])
+
+# TVOC Emissions Range
+
+class TVOCRange(Enum):
+   UNDER_0_22 = "0.22 mg/m3 or less"
+   UNDER_0_50 = "0.50 mg/m3 or less"
+   BETWEEN_0_50_AND_5_00 = "0.50 to 5.00 mg/m3"
+   OVER_5_00 = "5.00 mg/m3 or more"
 
 class TVOCEmissionsRange(BaseModel):
-   value: Any
+   metric: Optional[TVOCRange] = Field(None, description=field_descriptions['metric'])
+   description: str = _factor_descriptions['TVOCEmissionsRange']
+   standard: Any = Field(None, description=field_descriptions['standard'])
+
+# Emissions Modeling Scenario
+
+class ModelingScenario(Enum):
+   PRIVATE_OFFICE = "Private Office Scenario"
+   SCHOOL_CLASSROOM = "School Classroom Scenario"
+   SINGLE_FAMILY_RESIDENCE = "Single-Family Residence Scenario"
+   OPEN_PLAN_OFFICE = "Open Plan Office Scenario"
+   SEATING = "Seating Scenario"
 
 class EmissionsModelingScenario(BaseModel):
-   value: Any
+   metric: Optional[List[ModelingScenario]] = Field(None, description=field_descriptions['metric'])
+   description: str = _factor_descriptions['EmissionsModelingScenario']
+   standard: Any = Field(None, description=field_descriptions['standard'])
+
+# Composite Wood - Formaldehyde Emissions Compliance
+
+class FormaldehydeCompliance(Enum):
+   NO_ADDED_FORMALDEHYDE = "No Added Formaldehyde"
+   ULTRA_LOW_EMITTING = "Ultra Low Emitting Formaldehyde"
+   NOT_APPLICABLE = "Not Applicable"
+   CARB_EXEMPT = "CARB Exempt"
 
 class CompositeWoodFormaldehydeCompliance(BaseModel):
-   value: Any
+   metric: Optional[FormaldehydeCompliance] = Field(None, description=field_descriptions['metric'])
+   description: str = _factor_descriptions['CompositeWoodFormaldehydeCompliance']
+   standard: Any = Field(None, description=field_descriptions['standard'])
+
+# Furniture - BIFMA Compliance
+
+class BIFMASection(Enum):
+    SECTION_7_6_1 = "Section 7.6.1"
+    SECTION_7_6_2 = "Section 7.6.2" 
+    SECTION_7_6_3 = "Section 7.6.3"
 
 class FurnitureBIFMACompliance(BaseModel):
-   value: Any
+    metric: Optional[List[BIFMASection]] = Field(None, description=field_descriptions['metric'])
+    description: str = _factor_descriptions['FurnitureBIFMACompliance']
+    standard: Any = Field(None, description=field_descriptions['standard'])
 
 ###########################################
 # CATEGORIES
