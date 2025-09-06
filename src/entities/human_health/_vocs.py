@@ -30,21 +30,18 @@ class VOCTestingType(Enum):
 class ApplicableVOCTesting(BaseModel):
    metric: Optional[List[VOCTestingType]] = Field(None, description=field_descriptions['metric'])
    description: str = _factor_descriptions['ApplicableVOCTesting']
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # VOC Content (Regulatory)
 
 class VOCContentRegulatory(BaseModel):
     metric: Optional[float] = Field(None, ge=0, le=1000, description=field_descriptions['metric'])
     description: str = _factor_descriptions['VOCContentRegulatory']
-    standard: Any = Field(None, description=field_descriptions['standard'])
 
 # VOC Content (CARB 2007)
 
 class VOCContentCarb2007Compliance(BaseModel):
    metric: Optional[bool] = Field(None, description=field_descriptions['metric'])
    description: str = _factor_descriptions['VOCContentCarb2007']
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # VOC Content - SCAQMD Compliance
 
@@ -57,7 +54,6 @@ class SCAQMDCompliance(Enum):
 class VOCContentSCAQMDCompliance(BaseModel):
    metric: Optional[SCAQMDCompliance] = Field(None, description=field_descriptions['metric'])
    description: str = _factor_descriptions['VOCContentSCAQMDCompliance']
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # VOC Emissions Compliance
 
@@ -70,7 +66,6 @@ class VOCEmissionsStandard(Enum):
 class VOCEmissionsCompliance(BaseModel):
    metric: Optional[VOCEmissionsStandard] = Field(None, description=field_descriptions['metric'])
    description: str = _factor_descriptions['VOCEmissionsCompliance']
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # TVOC Emissions Range
 
@@ -83,7 +78,6 @@ class TVOCRange(Enum):
 class TVOCEmissionsRange(BaseModel):
    metric: Optional[TVOCRange] = Field(None, description=field_descriptions['metric'])
    description: str = _factor_descriptions['TVOCEmissionsRange']
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # Emissions Modeling Scenario
 
@@ -97,7 +91,6 @@ class ModelingScenario(Enum):
 class EmissionsModelingScenario(BaseModel):
    metric: Optional[List[ModelingScenario]] = Field(None, description=field_descriptions['metric'])
    description: str = _factor_descriptions['EmissionsModelingScenario']
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # Composite Wood - Formaldehyde Emissions Compliance
 
@@ -110,19 +103,17 @@ class FormaldehydeCompliance(Enum):
 class CompositeWoodFormaldehydeCompliance(BaseModel):
    metric: Optional[FormaldehydeCompliance] = Field(None, description=field_descriptions['metric'])
    description: str = _factor_descriptions['CompositeWoodFormaldehydeCompliance']
-   standard: Any = Field(None, description=field_descriptions['standard'])
 
 # Furniture - BIFMA Compliance
 
 class BIFMASection(Enum):
-    SECTION_7_6_1 = "Section 7.6.1"
-    SECTION_7_6_2 = "Section 7.6.2" 
-    SECTION_7_6_3 = "Section 7.6.3"
+   SECTION_7_6_1 = "Section 7.6.1"
+   SECTION_7_6_2 = "Section 7.6.2" 
+   SECTION_7_6_3 = "Section 7.6.3"
 
 class FurnitureBIFMACompliance(BaseModel):
-    metric: Optional[List[BIFMASection]] = Field(None, description=field_descriptions['metric'])
-    description: str = _factor_descriptions['FurnitureBIFMACompliance']
-    standard: Any = Field(None, description=field_descriptions['standard'])
+   metric: Optional[List[BIFMASection]] = Field(None, description=field_descriptions['metric'])
+   description: str = _factor_descriptions['FurnitureBIFMACompliance']
 
 ###########################################
 # CATEGORIES
