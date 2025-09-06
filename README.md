@@ -1,17 +1,15 @@
-# Mindful Materials Data Infrastructure
+# Common Materials Framework Schema
 
-This is a repository for open source data infrastructure work supporting Mindful Materials and the Common Materials Framework.
-
+This is an open source repository for a machine-readable version of the Common Materials Framework. 
 
 ## Launching the Application
-
 
 To run the application locally, 
 1. Install necessary dependencies from `requirements.txt`
 2. Run `uvicorn src.web.main:app --reload`
 
-
 ______
+
 Copyright 2025 Climate Scale, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at https://www.apache.org/licenses/LICENSE-2.0
