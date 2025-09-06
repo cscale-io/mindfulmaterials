@@ -1,12 +1,23 @@
 from pydantic import BaseModel, Field
-from typing import Literal, Any, Optional, Enum, List
+from typing import Any, Optional, List
+from enum import Enum
 from ..utilties import field_descriptions
 
 ###########################################
 # FACTORS
 ###########################################
 
-_factor_descriptions = {}
+_factor_descriptions = {
+   "ApplicableVOCTesting": "1.2.2.1 Applicable VOC Testing",
+   "VOCContentRegulatory": "1.2.2.2 VOC Content (Regulatory)",
+   "VOCContentCarb2007": "1.2.4.1 VOC Content - CARB 2007 Compliance",
+   "VOCContentSCAQMDCompliance": "1.2.4.2 VOC Content - SCAQMD Compliance Level",
+   "VOCEmissionsCompliance": "1.2.4.3 VOC Emissions Compliance",
+   "TVOCEmissionsRange": "1.2.4.4 TVOC Emissions Range",
+   "EmissionsModelingScenario": "1.2.4.5 Emissions Modeling Scenario for Compliance",
+   "CompositeWoodFormaldehydeCompliance": "1.2.4.6 Composite Wood - Formaldehyde Emissions Compliance (CARB & TSCA Title VI)",
+   "FurnitureBIFMACompliance": "1.2.4.7 Furniture - ANSI/BIFMA M7.1-2011 Compliance"
+   }
 
 # Applicable VOC Testing
 

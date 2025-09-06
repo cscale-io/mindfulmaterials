@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
-from typing import Literal, Any, Optional, Enum, List
+from typing import Any, Optional, List
+from enum import Enum
 from ..utilties import field_descriptions
 
 ###########################################
