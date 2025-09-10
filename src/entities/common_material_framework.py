@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
 from .human_health.bucket import HumanHealth
@@ -27,6 +27,8 @@ class CircularEconomy(BaseModel):
 ###########################################
 
 class CommonMaterialsSchema(BaseModel):
+   model_config = ConfigDict(extra='forbid')
+
    product_data: Optional[ProductData] = None
    human_health: Optional[HumanHealth] = None
    social_health_equity: Optional[SocialHealthEquity] = None

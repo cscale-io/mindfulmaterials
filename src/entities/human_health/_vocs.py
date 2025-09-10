@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Any, Optional, List
 from enum import Enum
 from ..utilties import field_descriptions
@@ -120,10 +120,14 @@ class FurnitureBIFMACompliance(BaseModel):
 ###########################################
 
 class Assessment(BaseModel):
+   model_config = ConfigDict(extra='forbid')
+
    applicable_voc_testing: ApplicableVOCTesting
    voc_content_regulatory: VOCContentRegulatory
 
 class Optimization(BaseModel):
+   model_config = ConfigDict(extra='forbid')
+
    voc_content_carb2007_compliance: VOCContentCarb2007Compliance
    voc_content_scaqmd_compliance: VOCContentSCAQMDCompliance
    voc_emissions_compliance: VOCEmissionsCompliance
@@ -137,5 +141,7 @@ class Optimization(BaseModel):
 ###########################################
 
 class VOCs(BaseModel):
+   model_config = ConfigDict(extra='forbid')
+
    assessment: Assessment
    optimization: Optimization

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Any, Optional, List
 from enum import Enum
 from ..utilties import field_descriptions
@@ -146,6 +146,8 @@ class RestrictedSubstanceListScreening(BaseModel):
 ###########################################
 
 class Transparency(BaseModel):
+   model_config = ConfigDict(extra='forbid')
+
    reporting_threshold: ReportingThreshold
    third_party_verification: ThirdPartyVerification
    extent_of_disclosed_inventory: ExtentOfDisclosedInventory
@@ -154,6 +156,8 @@ class Transparency(BaseModel):
    identification: Identification
 
 class Optimization(BaseModel):
+   model_config = ConfigDict(extra='forbid')
+
    class_based_substance_avoidance: ClassBasedSubstanceAvoidance
    assessment_based_optimization: AssessmentBasedOptimization
    restricted_substance_list_screening: RestrictedSubstanceListScreening
@@ -163,5 +167,7 @@ class Optimization(BaseModel):
 ###########################################
 
 class Substances(BaseModel):
+   model_config = ConfigDict(extra='forbid')
+
    transparency: Transparency
    optimization: Optimization
