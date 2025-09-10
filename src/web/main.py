@@ -20,7 +20,11 @@ app = FastAPI(
    docs_url="/swagger"
 )
 
-app.mount("/", StaticFiles(directory="public", html=True), name="static")
+# API routes first
 app.include_router(schema_router)
+
+# Mount static files last
+app.mount("/", StaticFiles(directory="public", html=True), name="static")
+
 
 
